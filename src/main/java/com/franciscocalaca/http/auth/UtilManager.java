@@ -14,7 +14,7 @@ import com.franciscocalaca.http.utils.RespHttp;
 
 public class UtilManager {
 
-	public Map<String, Object> createUser(String urlAuthManager, String userStr, String passStr, User user) {
+	public static Map<String, Object> createUser(String urlAuthManager, String userStr, String passStr, User user) {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			String body = mapper.writeValueAsString(user);
