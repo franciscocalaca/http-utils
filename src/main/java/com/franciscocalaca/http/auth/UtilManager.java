@@ -37,4 +37,27 @@ public class UtilManager {
 		}
 	}	
 	
+	public static Map<String, Object> change(String urlChange, String userStr, String passStr, PasswordChange change) {
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			String body = mapper.writeValueAsString(change);
+			
+			String auth = userStr + ":" + passStr;
+			byte[] encodedAuth = Base64.getEncoder().encode(auth.getBytes(StandardCharsets.UTF_8));
+			String authHeader = "Basic " + new String(encodedAuth);
+			PostMethod httpPost = new PostMethod(urlChange);
+			StringRequestEntity stringEntity = new StringRequestEntity(body, "application/json", "utf-8");
+			httpPost.setRequestEntity(stringEntity);
+			httpPost.addRequestHeader("Authorization", authHeader);
+
+			HttpClient httpClient = new HttpClient();
+			int result = httpClient.executeMethod(httpPost);
+			RespHttp resp = new RespHttp(result, httpPost);
+			return resp.getContentAsMap();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		}
+	}	
+	
 }
