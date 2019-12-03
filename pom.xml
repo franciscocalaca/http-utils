@@ -5,7 +5,7 @@
 
 	<groupId>com.franciscocalaca</groupId>
 	<artifactId>http-utils</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5</version>
 	<packaging>jar</packaging>
 
 	<name>http-utils</name>

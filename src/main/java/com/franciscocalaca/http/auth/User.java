@@ -44,4 +44,9 @@ public class User {
 	public Map<String, Object> getExtra() {
 		return extra;
 	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	
 }
