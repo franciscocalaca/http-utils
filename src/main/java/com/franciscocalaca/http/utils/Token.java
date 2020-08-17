@@ -110,7 +110,6 @@ public class Token {
 	}
 	
 	public void validate() throws HttpException, IOException {
-		System.out.printf("Remaining: %d\n", getSecondsRemaining());
 		if(getSecondsRemaining() < 30) {
 			try {
 				Thread.sleep(3000);
