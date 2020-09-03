@@ -110,20 +110,26 @@ public class Token {
 	}
 	
 	public void validate() throws HttpException, IOException {
-		if(getSecondsRemaining() < 30) {
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
+		if(this.accessToken == null || getSecondsRemaining() < 30) {
+			sleep(3000);
 			request();
-			System.out.println("new token .... " + accessToken);
-			
 		}
 		
 		if(error != null) {
 			request();
 		}
+	}
+	
+	private void sleep(long time) {
+		try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void invalidate() {
+		this.accessToken = null;
 	}
 	
 
