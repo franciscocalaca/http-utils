@@ -100,7 +100,6 @@ public class Token {
 			this.setMessage((String) mapResp.get("message"));
 		}
 
-		System.out.println(httpPost.getResponseBodyAsString());
 		httpPost.releaseConnection();
 	}
 	
